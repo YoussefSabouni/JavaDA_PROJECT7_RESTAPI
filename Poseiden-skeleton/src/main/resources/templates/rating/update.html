@@ -1,95 +1,25 @@
 <!DOCTYPE html>
-<html
-        xmlns="http://www.w3.org/1999/xhtml"
-        xmlns:th="http://www.thymeleaf.org"
->
+<html xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="utf-8" />
-    <title>Home</title>
-    <link href="/static/css/bootstrap.min.css" rel="stylesheet">
+	<meta charset="utf-8"/>
+	<title>Home</title>
+	<link rel="stylesheet" href="../../css/bootstrap.min.css" >
 </head>
 <body>
 <div class="container">
 
-    <div class="row">
-        <h2>Update Rating</h2>
-    </div>
+	<div class="row">
+		<h2>Update Rating</h2>
+	</div>
 
-    <div class="row">
-        <form
-                action="#"
-                class="form-horizontal"
-                method="post"
-                style="width: 100%"
-                th:action="@{/rating/update/{id}(id=${rating.id})}"
-                th:object="${rating}"
-        >
-            <div class="form-group">
-                <label class="col-sm-2 control-label" for="moodysRating">MoodysRating</label>
-                <div class="col-sm-10">
-                    <input
-                            class="col-4"
-                            id="moodysRating"
-                            placeholder="MoodysRating"
-                            required
-                            th:field="*{moodysRating}"
-                            type="text"
-                    >
-                    <p class="text-danger" th:errors="*{moodysRating}" th:if="${#fields.hasErrors('moodysRating')}"></p>
-                </div>
-            </div>
-            <div class="form-group">
-                <label class="col-sm-2 control-label" for="sandPRating">SandPRating</label>
-                <div class="col-sm-10">
-                    <input
-                            class="col-4"
-                            id="sandPRating"
-                            placeholder="SandPRating"
-                            required
-                            th:field="*{sandPRating}"
-                            type="text"
-                    >
-                    <p class="text-danger" th:errors="*{sandPRating}" th:if="${#fields.hasErrors('sandPRating')}"></p>
-                </div>
-            </div>
-            <div class="form-group">
-                <label class="col-sm-2 control-label" for="fitchRating">FitchRating</label>
-                <div class="col-sm-10">
-                    <input
-                            class="col-4"
-                            id="fitchRating"
-                            placeholder="FitchRating"
-                            required
-                            th:field="*{fitchRating}"
-                            type="text"
-                    >
-                    <p class="text-danger" th:errors="*{fitchRating}" th:if="${#fields.hasErrors('fitchRating')}"></p>
-                </div>
-            </div>
-            <div class="form-group">
-                <label class="col-sm-2 control-label" for="order">Order</label>
-                <div class="col-sm-10">
-                    <input
-                            class="col-4"
-                            id="order"
-                            min="0"
-                            placeholder="Order"
-                            required
-                            step="1"
-                            th:field="*{orderNumber}"
-                            type="number"
-                    >
-                    <p class="text-danger" th:errors="*{orderNumber}" th:if="${#fields.hasErrors('orderNumber')}"></p>
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="col-sm-12">
-                    <a class="btn btn-danger btn-sm" href="/rating/list">Cancel</a>
-                    <input class="btn btn-primary btn-sm" type="submit" value="Add Rating">
-                </div>
-            </div>
-        </form>
-    </div>
+	<div class="row">
+		<form action="#" th:action="@{/rating/update/{id}(id=${rating.id})}" th:object="${rating}" method="post" class="form-horizontal" style="width: 100%">
+			<!--
+			TODO: Create a form to edit the values of Rating, there are 2 buttons: Update data and Cancel to the Rating
+			 -->
+		</form>
+	</div>
 
 </div>
 </body>
