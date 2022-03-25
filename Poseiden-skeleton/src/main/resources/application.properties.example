@@ -7,12 +7,13 @@ spring.jpa.show-sql                                             = true
 spring.jpa.properties.hibernate.format_sql                      = true
 
 ############################   DataSource Configuration   #######################
-spring.datasource.url                                           = jdbc:mysql://localhost:3306/demo?allowPublicKeyRetrieval=true&useSSL=false
-spring.datasource.username                                      = root
-spring.datasource.password                                      = Jecode4wcs!
+spring.datasource.url                                           =
+jdbc:[sql-driver]://[host]:[port]/[database_name]?allowPublicKeyRetrieval=true&useSSL=false
+spring.datasource.username                                      = [username]
+spring.datasource.password                                      = [password]
 
 spring.datasource.initialization-mode                           = always
 
 #############################  OAuth2 Authentication  ###########################
-spring.security.oauth2.client.registration.github.client-id     = fdbeda19c4f1f40e73ac
-spring.security.oauth2.client.registration.github.client-secret = f0e2389c6f7d8e3bcfe05236ea1d7e77c953aa46
+spring.security.oauth2.client.registration.github.client-id     = [github-client_id]
+spring.security.oauth2.client.registration.github.client-secret = [github-client-secret]
