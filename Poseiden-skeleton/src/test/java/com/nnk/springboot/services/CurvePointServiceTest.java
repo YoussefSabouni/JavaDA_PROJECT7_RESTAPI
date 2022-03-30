@@ -15,7 +15,7 @@ import java.util.NoSuchElementException;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class CurvePointTests {
+public class CurvePointServiceTest {
 
     @Autowired
     private CurvePointService curvePointService;
