@@ -15,7 +15,7 @@ import java.util.NoSuchElementException;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class RuleTests {
+public class RuleServiceTest {
 
     @Autowired
     private RuleNameService ruleNameService;

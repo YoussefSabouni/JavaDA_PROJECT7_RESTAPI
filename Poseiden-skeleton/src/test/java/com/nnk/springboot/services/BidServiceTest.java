@@ -15,7 +15,7 @@ import java.util.NoSuchElementException;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class BidTests {
+public class BidServiceTest {
 
     @Autowired
     private BidListService bidListService;
