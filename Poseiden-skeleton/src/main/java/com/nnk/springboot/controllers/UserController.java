@@ -1,10 +1,9 @@
 package com.nnk.springboot.controllers;
 
 import com.nnk.springboot.domain.User;
-import com.nnk.springboot.repositories.UserRepository;
+import com.nnk.springboot.services.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -22,15 +21,19 @@ public class UserController {
 
     private final Logger LOGGER = LoggerFactory.getLogger(UserController.class);
 
-    @Autowired
-    private UserRepository userRepository;
+    private final UserService userService;
+
+    public UserController(UserService userService) {
+
+        this.userService = userService;
+    }
 
     @RequestMapping("/user/list")
     public String home(Model model) {
 
         LOGGER.info("UserController.class | Get Request: \"/user/list\"");
 
-        model.addAttribute("users", userRepository.findAll());
+        model.addAttribute("users", userService.findAll());
         return "user/list";
     }
 
@@ -50,8 +53,8 @@ public class UserController {
         if (!result.hasErrors()) {
             BCryptPasswordEncoder encoder = new BCryptPasswordEncoder(10, new SecureRandom());
             user.setPassword(encoder.encode(user.getPassword()));
-            userRepository.save(user);
-            model.addAttribute("users", userRepository.findAll());
+            userService.save(user);
+            model.addAttribute("users", userService.findAll());
             return "redirect:/user/list";
         }
         return "user/add";
@@ -62,8 +65,7 @@ public class UserController {
 
         LOGGER.info("UserController.class | Get Request: \"/user/update/{}\"", id);
 
-        User user = userRepository.findById(id)
-                                  .orElseThrow(() -> new IllegalArgumentException("Invalid user Id:" + id));
+        User user = userService.findById(id);
         user.setPassword("");
         model.addAttribute("user", user);
         return "user/update";
@@ -81,8 +83,8 @@ public class UserController {
         BCryptPasswordEncoder encoder = new BCryptPasswordEncoder(10, new SecureRandom());
         user.setPassword(encoder.encode(user.getPassword()));
         user.setId(id);
-        userRepository.save(user);
-        model.addAttribute("users", userRepository.findAll());
+        userService.save(user);
+        model.addAttribute("users", userService.findAll());
         return "redirect:/user/list";
     }
 
@@ -91,10 +93,9 @@ public class UserController {
 
         LOGGER.info("UserController.class | Get Request: \"/user/delete/{}\"", id);
 
-        User user = userRepository.findById(id)
-                                  .orElseThrow(() -> new IllegalArgumentException("Invalid user Id:" + id));
-        userRepository.delete(user);
-        model.addAttribute("users", userRepository.findAll());
+        User user = userService.findById(id);
+        userService.deleteById(user.getId());
+        model.addAttribute("users", userService.findAll());
         return "redirect:/user/list";
     }
 }
