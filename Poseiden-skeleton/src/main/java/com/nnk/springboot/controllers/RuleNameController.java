@@ -140,7 +140,7 @@ public class RuleNameController {
         LOGGER.info("RuleNameController.class | Post Request: \"/ruleName/update/{}\"", id);
 
         if (result.hasErrors()) {
-            return "/ruleName/update";
+            return "ruleName/update";
         }
 
         this.ruleNameService.save(ruleName);
