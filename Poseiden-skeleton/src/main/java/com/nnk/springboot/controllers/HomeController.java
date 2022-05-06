@@ -1,11 +1,15 @@
 package com.nnk.springboot.controllers;
 
+import com.nnk.springboot.domain.User;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+/**
+ * Specific controller for redirecting {@link User} when it comes to the root URL of the site.
+ */
 @Controller
 public class HomeController {
 
