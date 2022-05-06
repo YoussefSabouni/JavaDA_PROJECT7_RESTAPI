@@ -3,6 +3,9 @@ package com.nnk.springboot.domain;
 import javax.persistence.*;
 import javax.validation.constraints.*;
 
+/**
+ * Representation of the structure of a {@link Rating}.
+ */
 @Entity
 @Table(name = "rating")
 public class Rating {

@@ -4,7 +4,9 @@ import javax.persistence.*;
 import javax.validation.constraints.*;
 import java.sql.Timestamp;
 
-
+/**
+ * Representation of the structure of a {@link Trade}.
+ */
 @Entity
 @Table(name = "trade")
 public class Trade {

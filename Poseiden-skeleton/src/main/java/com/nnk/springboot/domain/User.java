@@ -11,6 +11,9 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
+/**
+ * This class represents a {@link User} and implements {@link UserDetails}, so it can be used with Spring Security.
+ */
 @Entity
 @Table(name = "users")
 public class User implements UserDetails {
@@ -48,11 +51,6 @@ public class User implements UserDetails {
     public void setId(Integer id) {
 
         this.id = id;
-    }
-
-    public void setUsername(String username) {
-
-        this.username = username;
     }
 
     public String getPassword() {
@@ -119,6 +117,10 @@ public class User implements UserDetails {
         return this.username;
     }
 
+    public void setUsername(String username) {
+
+        this.username = username;
+    }
 
     /**
      * Spring Security features that must be implemented but are not used for this project.

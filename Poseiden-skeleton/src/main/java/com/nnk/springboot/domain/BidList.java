@@ -4,6 +4,9 @@ import javax.persistence.*;
 import javax.validation.constraints.*;
 import java.sql.Timestamp;
 
+/**
+ * Representation of the structure of a {@link BidList}.
+ */
 @Entity
 @Table(name = "bidlist")
 public class BidList {

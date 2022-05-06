@@ -4,6 +4,9 @@ import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
+/**
+ * Representation of the structure of a {@link RuleName}.
+ */
 @Entity
 @Table(name = "rulename")
 public class RuleName {

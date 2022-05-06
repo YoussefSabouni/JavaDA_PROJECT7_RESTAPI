@@ -9,6 +9,10 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
+/**
+ * This class extends the {@link WebSecurityConfigurerAdapter} interface to customise the security rules automatically
+ * defined by Spring Security with the {@link EnableWebSecurity} annotation.
+ */
 @EnableWebSecurity
 public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
 
@@ -81,7 +85,7 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
     }
 
     /**
-     * Expose le {@link AuthenticationManager} en tant que Bean.
+     * Exposes the {@link AuthenticationManager} as a Bean.
      *
      * @return the {@link AuthenticationManager}.
      *
@@ -95,6 +99,11 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
         return super.authenticationManagerBean();
     }
 
+    /**
+     * Exposes the
+     *
+     * @return the new {@link BCryptPasswordEncoder} instance.
+     */
     @Bean
     public BCryptPasswordEncoder bCryptPasswordEncoder() {
 
