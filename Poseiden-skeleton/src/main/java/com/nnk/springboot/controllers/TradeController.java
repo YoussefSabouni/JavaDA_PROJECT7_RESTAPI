@@ -138,7 +138,7 @@ public class TradeController {
         LOGGER.info("TradeController.class | Post Request: \"/trade/update/{}\"", id);
 
         if (result.hasErrors()) {
-            return "/trade/update";
+            return "trade/update";
         }
 
         this.tradeService.save(trade);
