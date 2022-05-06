@@ -16,6 +16,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import javax.validation.Valid;
 import java.security.SecureRandom;
 
+/**
+ * Controller specifically for managing the {@link User}.
+ */
 @Controller
 public class UserController {
 
@@ -23,11 +26,26 @@ public class UserController {
 
     private final UserService userService;
 
+    /**
+     * Create a new instance of this {@link UserController}. This will be done automatically by SpringBoot with
+     * dependencies injection.
+     *
+     * @param userService
+     *         instance of {@link UserService} .
+     */
     public UserController(UserService userService) {
 
         this.userService = userService;
     }
 
+    /**
+     * Returns a view containing the list of {@link User} to the connected {@link User}.
+     *
+     * @param model
+     *         provides the attributes used by the views.
+     *
+     * @return a {@link String} that refers to the name of a view.
+     */
     @RequestMapping("/user/list")
     public String home(Model model) {
 
@@ -37,6 +55,11 @@ public class UserController {
         return "user/list";
     }
 
+    /**
+     * Returns a view containing the form for adding a {@link User} to a connected {@link User}.
+     *
+     * @return a {@link String} that refers to the name of a view.
+     */
     @GetMapping("/user/add")
     public String addUser(User bid) {
 
@@ -45,6 +68,18 @@ public class UserController {
         return "user/add";
     }
 
+    /**
+     * Retrieves a model containing a {@link User} to add to database from a {@link User} connected.
+     *
+     * @param user
+     *         to add to database.
+     * @param result
+     *         is an interface that dictates how the object that stores the validation result.
+     * @param model
+     *         provides the attributes used by the views.
+     *
+     * @return a {@link String} that refers to the name of a view.
+     */
     @PostMapping("/user/validate")
     public String validate(@Valid User user, BindingResult result, Model model) {
 
@@ -60,6 +95,17 @@ public class UserController {
         return "user/add";
     }
 
+    /**
+     * Returns a view containing the pre-populated form for editing the {@link User} of the corresponding id for a
+     * logged in {@link User}.
+     *
+     * @param id
+     *         of the {@link User} to be modified.
+     * @param model
+     *         provides the attributes used by the views.
+     *
+     * @return a {@link String} that refers to the name of a view.
+     */
     @GetMapping("/user/update/{id}")
     public String showUpdateForm(@PathVariable("id") Integer id, Model model) {
 
@@ -71,6 +117,20 @@ public class UserController {
         return "user/update";
     }
 
+    /**
+     * Returns a view based on whether the {@link User} is correct to a {@link User} for a connected {@link User}.
+     *
+     * @param id
+     *         of the {@link User} to be modified.
+     * @param user
+     *         to be modified
+     * @param result
+     *         is an interface that dictates how the object that stores the validation result.
+     * @param model
+     *         provides the attributes used by the views.
+     *
+     * @return a {@link String} that refers to the name of a view.
+     */
     @PostMapping("/user/update/{id}")
     public String updateUser(@PathVariable("id") Integer id, @Valid User user, BindingResult result, Model model) {
 
@@ -88,6 +148,17 @@ public class UserController {
         return "redirect:/user/list";
     }
 
+    /**
+     * Returns a view containing the list of {@link User} after deleting the {@link User} corresponding to the id if it
+     * exists at the connected {@link User}.
+     *
+     * @param id
+     *         of the {@link User} to be deleted.
+     * @param model
+     *         provides the attributes used by the views.
+     *
+     * @return a {@link String} that refers to the name of a view.
+     */
     @GetMapping("/user/delete/{id}")
     public String deleteUser(@PathVariable("id") Integer id, Model model) {
 

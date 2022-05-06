@@ -6,7 +6,9 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Positive;
 import java.sql.Timestamp;
 
-
+/**
+ * Representation of the structure of a {@link CurvePoint}.
+ */
 @Entity
 @Table(name = "curvepoint")
 public class CurvePoint {

@@ -10,6 +10,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+/**
+ * Specific controller for the {@link User} connection management.
+ */
 @Controller
 @RequestMapping("app")
 public class LoginController {
